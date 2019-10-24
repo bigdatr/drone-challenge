@@ -3,17 +3,26 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "watch": "yarn watch-client & yarn watch-api",
-    "watch-api": "node src/api.js",
-    "watch-client": "yarn poi src/client.js --serve"
+    "watch": "concurrently \"yarn watch-api\" \"yarn watch-client\"",
+    "watch-api": "nodemon src/api.js",
+    "watch-client": "yarn poi src/client.js --serve",
+    "test": "node_modules/.bin/mocha --recursive"
   },
   "devDependencies": {
+    "axios": "^0.19.0",
+    "chai": "^4.2.0",
+    "concurrently": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs-extra": "^8.1.0",
+    "mocha": "^6.2.2",
+    "multer": "^1.4.2",
+    "nodemon": "^1.19.4",
     "poi": "^12.7.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-fetch-hook": "^1.7.1"
+    "react-fetch-hook": "^1.7.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.1"
   }
 }

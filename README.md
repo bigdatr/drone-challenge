@@ -49,3 +49,5 @@ yarn watch
 # open the app
 open http://localhost:4000
 ```
+
+# Choose Instruction File and Click Submit
