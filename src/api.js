@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const path = require('path');
+const _ = require('lodash');
 
 const Drone = require('./models/Drone');
 const Billboard = require('./models/Billboard');
@@ -23,11 +24,9 @@ app.post('/drone', function(req, res) {
 
     drones = []
     for (let i = 0; i < count; i++) {
-        console.log(instructions);
         drones.push(new Drone(instructions.match(new RegExp('.{1,'+count+'}','g')).map(x=>x[i])));
     }
-    console.log(drones);
-    res.json({no_of_drones: drones.length});
+    res.json({no_of_billboards: _.uniqWith(drones[0].getBillboards(),_.isEqual).length});
 });
 
 app.listen(4001, () => console.log(`Api started at http://localhost:4001`));
