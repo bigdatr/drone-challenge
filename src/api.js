@@ -19,12 +19,14 @@ app.get('/', (req, res) => {
 app.post('/drone', function(req, res) {
     console.log(req.body);
     var count = req.body.droneCount;
-    var instructions = req.body.droneinstructions;
+    var instructions = req.body.droneInstructions;
 
     drones = []
     for (let i = 0; i < count; i++) {
-        drones.push(new Drone(instructions))
+        console.log(instructions);
+        drones.push(new Drone(instructions.match(new RegExp('.{1,'+count+'}','g')).map(x=>x[i])));
     }
+    console.log(drones);
     res.json({no_of_drones: drones.length});
 });
 
