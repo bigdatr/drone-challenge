@@ -6,6 +6,7 @@ const path = require('path');
 
 app.use(cors());
 
+//starting now. 
 app.get('/', (req, res) => {
     res.json({foo: 'bar'});
 });
