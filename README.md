@@ -44,7 +44,8 @@ The project consists of an express route in `api.js` and a react client in `clie
 yarn install
 
 # Run the api and client
-yarn watch
+yarn watch-api
+yarn watch-client
 
 # open the app
 open http://localhost:4000
