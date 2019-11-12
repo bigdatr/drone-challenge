@@ -21,12 +21,16 @@ app.post('/drone', function(req, res) {
     console.log(req.body);
     var count = req.body.droneCount;
     var instructions = req.body.droneInstructions;
-
-    drones = []
+    drones = [];
+    billboards = [];
     for (let i = 0; i < count; i++) {
-        drones.push(new Drone(instructions.match(new RegExp('.{1,'+count+'}','g')).map(x=>x[i])));
+        drones.push(new Drone(instructions.match(new RegExp('.{1,'+count+'}','g')).map(x=>x[i]).filter(x=>x!=null)));
     }
-    res.json({no_of_billboards: _.uniqWith(drones[0].getBillboards(),_.isEqual).length});
+    drones.forEach(drone=>{
+        billboards.push(...drone.getBillboards());
+    });
+    console.log(billboards);
+    res.json({no_of_billboards: _.uniqWith(billboards,_.isEqual).length});
 });
 
 app.listen(4001, () => console.log(`Api started at http://localhost:4001`));
