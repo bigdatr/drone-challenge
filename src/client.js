@@ -80,6 +80,7 @@ class DroneInput extends Component{
                 <br/><br/>
                 <label>Instructions: </label>
                 <input type="text" name = "instructions" value = {droneInstructions} onChange={this.handleInstructionsChange}/>
+                <br/><br/>
                 <button type="submit" disabled={!this.state.isValidInput}>Submit</button>
             </form>
            <h3>Number of Billboards photographed: {this.state.numberOfBillBoards}</h3>
