@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './DroneForm.css';
+import axios from 'axios';
 
 class DroneForm extends React.Component{
 
@@ -8,30 +9,68 @@ class DroneForm extends React.Component{
         super(props)
         this.state = {
             instructions: "",
-            droneCount: 1
+            droneCount: 1,
+            instructionsValid: true,
+            droneCountValid: true,
+            response: {},
+            error: undefined
         }
+    }
+
+    areInstructionsValid = (instructions) => {
+        return true;
+    }
+
+    isDroneCountValid = (droneCount) => {
+        return true;
     }
 
     handleInstructionChange = (e) => {
         e.preventDefault();
-        this.setState({instructions: e.target.value})
+        const instructions = e.target.value;
+
+        this.setState({
+            instructions: instructions,
+            instructionsValid: this.areInstructionsValid(instructions)  
+        })
+        
     }
 
     handleDroneCountChange = (e) => {
         e.preventDefault();
-        this.setState({droneCount: e.target.value})
+        const droneCount = e.target.value;
+
+        this.setState({
+            droneCount: droneCount,
+            droneCountValid: this.isDroneCountValid(droneCount)  
+        })
     }
 
     handleOnSubmit = (e) => {
         e.preventDefault();
-
-        console.log(e.target)
+        axios.post("http://localhost:4001/api/drones/journey", {
+            instructions: this.state.instructions,
+            numDrones: this.state.droneCount
+        })
+        .then(res => {
+            this.setState({
+                error: undefined,
+                response: res.data
+            })
+        })
+        .catch(err => {
+            this.setState({
+                error: err.response.data,
+                response: {}
+            })
+        })
     }
 
     render(){
-        const {instructions, droneCount} = this.state;
-
+        const {instructions, droneCount, response, error} = this.state;
+        const {drones, billboardsWithMultiVisits} = response;
         return (
+            <React.Fragment>
             <div id="drone-form-wrapper">
                 <h1>Calculate Drones</h1>
                 <form onSubmit={this.handleOnSubmit}>
@@ -47,7 +86,31 @@ class DroneForm extends React.Component{
                         <button type="submit">Calculate</button>
                     </div>
                 </form>
+                {error && <div id="drone-error">{error}</div>}
+                {drones && 
+                    <div id="drone-response">
+                        <div className="row">
+                            <h5># Multi visited drones: {billboardsWithMultiVisits}</h5>
+                        </div>
+                        <div className="row">
+                            <table>
+                                <tr>
+                                    <th>Drone #</th>
+                                    <th>Path</th>
+                                    <th># Billboards</th>
+                                </tr>
+                                {drones.map((drone, _) => 
+                                    <tr>
+                                        <td>{drone.id}</td>
+                                        <td>{drone.instructions}</td>
+                                        <td>{drone.billboards.length}</td>
+                                    </tr>
+                                )}
+                            </table>
+                        </div>
+                </div>}   
             </div>
+        </React.Fragment>
         )}
 }
 

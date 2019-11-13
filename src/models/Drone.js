@@ -30,7 +30,7 @@ module.exports = class Drone {
                     break;
                 case 'x':
                     // NOTE: This is fine for small journeys, but can get expensive later on 
-                    const existingBillboard = this.billboards.find(b => b.match(this.x, this.y))
+                    const existingBillboard = this.billboards.find(b => b.matchPosition(this.x, this.y))
                     if(existingBillboard)
                         existingBillboard.visit()
                     else {
@@ -48,13 +48,16 @@ module.exports = class Drone {
     }
 
     getJourney(){
+        return this
+    }
+
+    // Used for sorting the billboards
+    sort(){
         this.billboards.sort((a, b) => {
             let sort  = a.x - b.x;
             if(sort == 0)
                 return sort = a.y - b.y;
             return sort;
         })
-        this.billboards.forEach(b => b.print())
-        return this
     }
 }

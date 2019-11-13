@@ -9,8 +9,17 @@ module.exports = class Billboard{
         this.visits++;
     }
 
-    match(x, y){
-        return this.x === x && this.y === y;
+    matchPosition(x, y){
+        return this.x == x && this.y == y;
+    }
+    
+    // For matching another billboard
+    matchBillboard(billboard){
+        return this.x === billboard.x && this.y === billboard.y;
+    }
+
+    increment(x){
+        this.visits += x;
     }
 
     print(){
