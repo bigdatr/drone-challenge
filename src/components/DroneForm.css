@@ -90,8 +90,8 @@
 }
 
 #drone-response table td{
-    overflow: scroll;
-    /* text-overflow: ellipsis; */
+    overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     /* display: block; */
     /* text-overflow: clip; */
