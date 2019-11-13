@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
-    console.log(req.body.input)
     let input = `${req.body.input}`
 
     let x = 0
