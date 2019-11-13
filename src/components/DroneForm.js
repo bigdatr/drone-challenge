@@ -92,7 +92,7 @@ class DroneForm extends React.Component{
                 {drones && 
                     <div id="drone-response">
                         <div className="row">
-                            <h5># Multi visited drones: {billboardsWithMultiVisits}</h5>
+                            <h5># Multi visited billboards: {billboardsWithMultiVisits}</h5>
                         </div>
                         <div className="row">
                             <table>
