@@ -31,6 +31,10 @@
     height: auto;
 }
 
+.field-error{
+    background-color: rgba(230, 66, 66, 0.55) !important;
+}
+
 #drone-form-wrapper label {
     font-size: 20px; 
     font-weight: bold;

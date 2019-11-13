@@ -18,20 +18,21 @@ class DroneForm extends React.Component{
     }
 
     areInstructionsValid = (instructions) => {
-        return true;
+        return instructions.match(/^[\^v<>x]+$/)
     }
 
     isDroneCountValid = (droneCount) => {
-        return true;
+        return !isNaN(droneCount)
     }
 
     handleInstructionChange = (e) => {
         e.preventDefault();
         const instructions = e.target.value;
-
+        const isValid = this.areInstructionsValid(instructions)
         this.setState({
             instructions: instructions,
-            instructionsValid: this.areInstructionsValid(instructions)  
+            instructionsValid: isValid,
+            error: isValid ? undefined : "Instruction does not meet allowed characters [v<>^x]"
         })
         
     }
@@ -39,10 +40,11 @@ class DroneForm extends React.Component{
     handleDroneCountChange = (e) => {
         e.preventDefault();
         const droneCount = e.target.value;
-
+        const isValid = this.isDroneCountValid(droneCount)
         this.setState({
             droneCount: droneCount,
-            droneCountValid: this.isDroneCountValid(droneCount)  
+            droneCountValid: isValid,
+            error: isValid ? undefined : "Count is not a number"
         })
     }
 
@@ -67,7 +69,7 @@ class DroneForm extends React.Component{
     }
 
     render(){
-        const {instructions, droneCount, response, error} = this.state;
+        const {instructions, droneCount, response, error, instructionsValid, droneCountValid} = this.state;
         const {drones, billboardsWithMultiVisits} = response;
         return (
             <React.Fragment>
@@ -76,11 +78,11 @@ class DroneForm extends React.Component{
                 <form onSubmit={this.handleOnSubmit}>
                     <div className="row">
                         <label>Instructions:</label>
-                        <textarea rows="5" value={instructions} type="text" name="instructions" onChange={this.handleInstructionChange} />
+                        <textarea rows="5" className={!instructionsValid ? "field-error" : ""} value={instructions} type="text" name="instructions" onChange={this.handleInstructionChange} />
                     </div>
                     <div className="row">
                         <label>Drone count: </label>
-                        <input type="text" value={droneCount} name="droneCount" onChange={this.handleDroneCountChange}/>
+                        <input type="text" className={!droneCountValid ? "field-error" : ""} value={droneCount} name="droneCount" onChange={this.handleDroneCountChange}/>
                     </div>
                     <div className="row">
                         <button type="submit">Calculate</button>
