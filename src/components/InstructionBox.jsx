@@ -5,7 +5,7 @@ import './InstructionBox.css'
 export const InstructionBox = ({ placeholder, handleChange }) => (
     <input
         className="instruction"
-        type="search"
+        type="text"
         placeholder={placeholder}
         onChange={handleChange}
     />

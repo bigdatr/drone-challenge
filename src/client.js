@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './client.css'
 import { InstructionBox } from './components/InstructionBox'
-
+import Header from './components/Header'
+import Footer from './components/Footer'
+import drone from './assets/drone.gif'
+import Informations from './components/Informations'
 
 class App extends React.Component {
     constructor() {
@@ -66,15 +70,17 @@ class App extends React.Component {
     }
 
     render() {
-        const data = this.state
-    
         return (
           <div className="App">
-            <h1> Drone Challenge </h1>
+            <Header/>
+            <img src={drone} alt="loading..." />
             <InstructionBox 
               placeholder="Instructions"
               handleChange={this.handleChange}
             />
+            <Informations data={this.state}/>
+            {/* A JSX comment 
+
             <p>locationDroneOneX:{data.locationDroneOneX}</p>
             <p>locationDroneOneY:{data.locationDroneOneY}</p>
             <p>photosDroneOne:{data.photosDroneOne}</p>
@@ -82,6 +88,9 @@ class App extends React.Component {
             <p>locationDroneTwoX:{data.locationDroneTwoX}</p>
             <p>locationDroneTwoY:{data.locationDroneTwoY}</p>
             <p>photosDroneTwo:{data.photosDroneTwo}</p>
+
+            */}
+            <Footer/>
           </div>
         )
       }

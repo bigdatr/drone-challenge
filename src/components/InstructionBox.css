@@ -1,0 +1,7 @@
+.instruction {
+    border: 2px solid #d84990;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 300px;
+  }
