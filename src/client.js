@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import useFetch from 'react-fetch-hook';
+import './client.css';
+import DroneForm from './components/DroneForm';
 
 
 function App() {
@@ -8,6 +10,14 @@ function App() {
     if(isLoading) {
         return 'Loading...';
     }
+
+    return (
+    <div id="container">
+        <h1 id="title">Drone Challenge</h1>  
+        <DroneForm />
+    </div>
+    )
+
     return <pre>{JSON.stringify(data, null, 4)}</pre>;
 }
 

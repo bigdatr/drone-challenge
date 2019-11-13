@@ -1,0 +1,36 @@
+html{
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    color: rgb(65, 65, 65); 
+    font-family: 'Helvetica Neue', sans-serif; 
+}
+
+#container{
+    width: 70vw;
+    height: 70vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title{
+    color: rgb(65, 65, 65); 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 70px; 
+    font-weight: bold;
+    letter-spacing: -1px; 
+    line-height: 1;
+    text-align: center; 
+}
+
+.row {
+    padding: 25px 10px;
+    display: flex;
+}
+
+/* remove browser outline */
+button:focus {outline:0;} 
