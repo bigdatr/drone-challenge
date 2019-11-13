@@ -1,0 +1,98 @@
+#drone-form-wrapper{
+    width: 30vw;
+    min-width: 550px;
+    /* height: 30vw; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgb(65, 65, 65); 
+    border-radius: 15px;
+}
+
+#drone-form-wrapper form {
+    width: 90%;
+}
+
+#drone-form-wrapper input,
+#drone-form-wrapper textarea  {
+    width: 60%;
+    float: right;
+    border: none;
+    height: 25px;
+    padding-left: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: rgba(226, 226, 226, 0.55);
+    border-radius: 10px;
+    outline:0;
+}
+
+#drone-form-wrapper textarea {
+    height: auto;
+}
+
+.field-error{
+    background-color: rgba(230, 66, 66, 0.55) !important;
+}
+
+#drone-form-wrapper label {
+    font-size: 20px; 
+    font-weight: bold;
+    width: 35%;
+    float: left;
+}
+
+#drone-form-wrapper button {
+    margin-top: 15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 35px;
+    width: 120px;
+    border-radius: 15px;
+    border: 2px solid rgb(65, 65, 65);
+    background-color: transparent;
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+#drone-form-wrapper button:hover {
+    cursor: pointer;
+    border: 2px solid rgb(128, 92, 2);
+    color:rgb(128, 92, 2);
+}
+
+#drone-form-wrapper button:active {
+    cursor: pointer;
+    border: 2px solid darkgoldenrod;
+    color:darkgoldenrod;
+}
+
+#drone-error, 
+#drone-response {
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+#drone-error{
+    color: red;
+    font-size: 18px;
+}
+
+#drone-response{
+    font-size: 18px;
+    width: 90%;
+}
+
+#drone-response table{
+    width: 100%;
+    text-align: center;
+    table-layout:fixed;
+}
+
+#drone-response table td{
+    overflow: scroll;
+    /* text-overflow: ellipsis; */
+    white-space: nowrap;
+    /* display: block; */
+    /* text-overflow: clip; */
+}
