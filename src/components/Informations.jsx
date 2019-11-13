@@ -7,10 +7,10 @@ const processPhotos = (photosDroneOne,photosDroneTwo) => {
     let uniques = [...new Set(photos)].length
     let duplicates = photos.length - uniques
 
-    duplicates == 1 ? duplicates++:''
+    duplicates >= 1 ? duplicates++:''
 
     info = `${uniques} differents billboards`
-    duplicates > 0 ? info += `, including ${duplicates} photos of the same billboard`:''
+    duplicates > 0 ? info += `, including ${duplicates} photos of the sames billboards`:''
 
     return info
 }

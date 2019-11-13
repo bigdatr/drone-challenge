@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const bodyParser = require("body-parser");
 
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get('/:input', (req, res) => {
-    let input = `${req.params.input}`
+app.post('/', (req, res) => {
+    console.log(req.body.input)
+    let input = `${req.body.input}`
 
     let x = 0
     let y = 0

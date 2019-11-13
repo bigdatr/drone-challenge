@@ -34,7 +34,7 @@ class App extends React.Component {
         let droneTwoInstruction = instructions.filter((v,i)=>i%2==1)
 
         if (droneOneInstruction.length > 0) {
-            axios.get(`http://localhost:4001/${droneOneInstruction}`)
+            axios.post(`http://localhost:4001/`,{input: droneOneInstruction})
                 .then(function (response) {
                     droneOne = response.data
                     self.setState({
@@ -51,7 +51,7 @@ class App extends React.Component {
             })
         }
         if (droneTwoInstruction.length > 0) {
-            axios.get(`http://localhost:4001/${droneTwoInstruction}`)
+            axios.post(`http://localhost:4001/`,{input: droneTwoInstruction})
                 .then(function (response) {
                     droneTwo = response.data
                     self.setState({
@@ -79,17 +79,6 @@ class App extends React.Component {
               handleChange={this.handleChange}
             />
             <Informations data={this.state}/>
-            {/* A JSX comment 
-
-            <p>locationDroneOneX:{data.locationDroneOneX}</p>
-            <p>locationDroneOneY:{data.locationDroneOneY}</p>
-            <p>photosDroneOne:{data.photosDroneOne}</p>
-            <br/>
-            <p>locationDroneTwoX:{data.locationDroneTwoX}</p>
-            <p>locationDroneTwoY:{data.locationDroneTwoY}</p>
-            <p>photosDroneTwo:{data.photosDroneTwo}</p>
-
-            */}
             <Footer/>
           </div>
         )
