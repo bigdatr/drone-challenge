@@ -1,4 +1,5 @@
 let Billboard = require('./Billboard');
+let billboardGrid = require('./BillboardGrid');
 
 module.exports = class Drone {
 
@@ -8,6 +9,7 @@ module.exports = class Drone {
         this.x = 0;
         this.y = 0;
         this.billboards = []
+        this.billboardGrid = new billboardGrid();
     }
 
     completeJourney (){
@@ -27,7 +29,14 @@ module.exports = class Drone {
                     this.x++;
                     break;
                 case 'x':
-                    this.billboards.push(new Billboard(this.x, this.y))
+                    // NOTE: This is fine for small journeys, but can get expensive later on 
+                    const existingBillboard = this.billboards.find(b => b.match(this.x, this.y))
+                    if(existingBillboard)
+                        existingBillboard.visit()
+                    else {
+                        this.billboards.push(new Billboard(this.x, this.y))
+                        this.billboardGrid.increaseGrid(this.x, this.y)
+                    }
                     break;
                 default:
                     // NOTE: this should not trigger as char validation was achieved in regex
@@ -38,5 +47,14 @@ module.exports = class Drone {
         console.log("journey completed")
     }
 
-
+    getJourney(){
+        this.billboards.sort((a, b) => {
+            let sort  = a.x - b.x;
+            if(sort == 0)
+                return sort = a.y - b.y;
+            return sort;
+        })
+        this.billboards.forEach(b => b.print())
+        return this
+    }
 }
