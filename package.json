@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "watch": "yarn watch-client & yarn watch-api",
-    "watch-api": "node src/api.js",
-    "watch-client": "yarn poi src/client.js --serve"
+    "watch-api": "node src/server/api.js",
+    "watch-client": "yarn poi src/client/client.js --serve"
   },
   "devDependencies": {
     "cors": "^2.8.5",
@@ -15,5 +15,12 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-fetch-hook": "^1.7.1"
+  },
+  "dependencies": {
+    "antd": "^3.25.1",
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0"
   }
 }

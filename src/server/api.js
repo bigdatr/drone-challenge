@@ -10,5 +10,10 @@ app.get('/', (req, res) => {
     res.json({foo: 'bar'});
 });
 
+app.post('/command', (req, res) => {
+    console.log(req);
+   res.json('success')
+});
+
 app.listen(4001, () => console.log(`Api started at http://localhost:4001`));
 

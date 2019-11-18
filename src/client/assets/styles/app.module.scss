@@ -1,0 +1,53 @@
+@import "./variable";
+
+.full_screen {
+  min-height: 100vh;
+}
+
+.header {
+  height: auto;
+}
+
+.header_logo {
+  text-align: center;
+
+  img {
+    width: 100px;
+    display: inline-block;
+  }
+}
+
+.footer {
+  text-align: center;
+}
+
+.padding_40 {
+  padding: 40px;
+}
+
+.form_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.form_wrapper {
+  //text-align: center;
+}
+.form_content {
+  padding: 20px;
+  width: 600px;
+  background: #ffffff;
+  margin: auto;
+}
+
+
+.uploader_icon {
+  font-size: 50px;
+  color: $color-uploader-icon;
+}
+
+.uploader_title {
+  font-size: 15px;
+  font-weight: bold;
+}
