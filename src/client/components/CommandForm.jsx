@@ -25,17 +25,18 @@ class CommandForm extends Component {
                 && this.state.fileList.length === 0) {
                 message.error('No File found');
             } else {
-                const formData = new FormData();
-                formData.append('username', 'Chris');
-                formData.append('quantity', values.quantity);
-                formData.append('type', values.type);
                 if (values.type === COMMAND_TYPE_FILE) {
-                    formData.append('files[]', this.state.fileList[0]);
+                    const formData = new FormData();
+                    formData.append('quantity', values.quantity);
+                    formData.append('file', this.state.fileList[0]);
+                    this.props.onSubmitCommand(values.type, formData);
                 } else {
-                    formData.append('command', values.command);
+                    const params = {
+                        quantity: values.quantity,
+                        command: values.command
+                    };
+                    this.props.onSubmitCommand(values.type, params);
                 }
-
-                this.props.onSubmitCommand(formData);
             }
         });
     }
@@ -57,7 +58,6 @@ class CommandForm extends Component {
             accept: '.txt',
             listType: 'text',
             onRemove: file => {
-                console.log(file);
                 this.setState(state => {
                     return {
                         fileList: [],
@@ -68,9 +68,13 @@ class CommandForm extends Component {
                 return null;
             },
             beforeUpload: file => {
-                this.setState(state => ({
-                    fileList: [file]
-                }));
+                if(file.type === 'text/plain') {
+                    this.setState(state => ({
+                        fileList: [file]
+                    }));
+                } else {
+                    message.error('txt file only');
+                }
                 return false
             }
         };
@@ -120,7 +124,17 @@ class CommandForm extends Component {
                                     <Form.Item label='Command'>
                                         {getFieldDecorator('command', {
                                             rules: [
-                                                {required: true, message: 'Required'}
+                                                {required: true, message: 'Required'},
+                                                {
+                                                    validator(rule, value, callback) {
+                                                        const rules = /^[x<^>v]*$/;
+                                                        if (!rules.test(value)) {
+                                                            callback('Incorrect command')
+                                                        } else {
+                                                            callback()
+                                                        }
+                                                    }
+                                                }
                                             ],
                                         })(
                                             <TextArea rows={4} placeholder='e.g. xx>>x'/>

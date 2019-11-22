@@ -1,18 +1,9 @@
 import axios from './NetworkInterceptor';
-import {merge} from 'lodash';
 
 
 class NetworkHelper {
 
-    makeRequest(_options) {
-        const method = _options.method || 'GET';
-        const options = merge(
-            {..._options},
-            {
-                method
-            }
-        );
-
+    makeRequest(options) {
         return axios(options).then((response) => {
             return response;
         }).catch(error => {
@@ -45,12 +36,23 @@ class NetworkHelper {
      * @param param
      * @returns {AxiosPromise}
      */
-    post(url, param) {
-        console.log(param);
+    jsonPost(url, param) {
         const options = {
             method: 'POST',
             url: url,
             data: param
+        };
+        return this.makeRequest(options);
+    }
+
+    formPost(url, formData) {
+        const options = {
+            method: 'POST',
+            url: url,
+            config: {
+                header: {'Content-Type': 'multipart/form-data'},
+            },
+            data: formData,
         };
         return this.makeRequest(options);
     }
