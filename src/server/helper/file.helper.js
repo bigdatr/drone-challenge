@@ -33,18 +33,18 @@ class FileHelper {
             if (file) {
                 fs.readFile(file, 'utf8', function (err, data) {
                     if (err) {
-                        reject('Unable to read file')
+                        reject(new Error('Unable to read file'))
                     }
                     const rules = /^[x<^>v]*$/;
                     if (rules.test(data)) {
                         resolve(data);
                     } else {
-                        reject('Invalid command');
+                        reject(new Error('Invalid command'));
                     }
 
                 })
             } else {
-                reject('No file found');
+                reject(new Error('No file found'));
             }
         })
 

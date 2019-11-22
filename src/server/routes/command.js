@@ -18,7 +18,6 @@ router.post('/string', bodyParser.json(), (req, res) => {
 
 });
 
-
 router.post('/file',  (req, res) => {
     fileHelper.getSingleFileHandler('file')(req,  res, function (err) {
         if (err) {

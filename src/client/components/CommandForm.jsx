@@ -81,7 +81,7 @@ class CommandForm extends Component {
         return (
             <Layout>
                 <div className={style.form_title}>
-                    Please enter your command to drone
+                    Please send your command to drone
                 </div>
                 <div className={style.form_wrapper}>
                     <div className={style.form_content}>
@@ -156,7 +156,9 @@ class CommandForm extends Component {
                             }
 
 
-                            <Form.Item>
+                            <Form.Item
+                                wrapperCol={{span: 12, offset: 5}}
+                            >
                                 <Button type="primary" htmlType="submit">
                                     Run
                                 </Button>

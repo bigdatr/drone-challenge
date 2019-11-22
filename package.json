@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "watch": "yarn watch-client & yarn watch-api",
-    "watch-api": "nodemon src/server/api.js",
+    "watch-api": "node src/server/api.js",
     "watch-client": "yarn poi src/client/client.js --serve"
   },
   "devDependencies": {

@@ -20,7 +20,7 @@ class CommandHelper {
             }
         });
         return {
-            uniqueBillboard: billboards.length,
+            uniqueBillboards: billboards.length,
             droneStatus: drones
         };
     }
