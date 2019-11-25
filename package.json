@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "watch": "yarn watch-client & yarn watch-api",
-    "watch-api": "node src/backend/api.js",
+    "watch-api": "nodemon src/backend/api.js",
     "watch-client": "yarn poi src/frontend/client.js --serve",
     "test": "jest --watch"
   },
@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "fs-extra": "^8.1.0",
     "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
     "poi": "^12.7.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
