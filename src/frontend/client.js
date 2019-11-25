@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import useFetch from 'react-fetch-hook';
 
-
 function App() {
     const {isLoading, data} = useFetch('http://localhost:4001');
     if(isLoading) {

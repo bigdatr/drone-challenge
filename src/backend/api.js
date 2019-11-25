@@ -3,9 +3,14 @@ const app = express();
 const cors = require('cors');
 const path = require('path');
 
+const drones = require('./routes/drones');
+
 
 app.use(cors());
 
+app.route('/drones', drones);
+
+// Root endpoint
 app.get('/', (req, res) => {
     res.json({foo: 'bar'});
 });
