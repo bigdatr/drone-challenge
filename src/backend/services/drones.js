@@ -8,6 +8,13 @@ function parseInstructions(instructions) {
     return instructions.split("");
 }
 
+function splitInstructions(instructions, dronesCount) {
+    const instructionsArr = parseInstructions(instructions);
+
+    return [instructionsArr];
+}
+
 module.exports = {
-    parseInstructions
+    parseInstructions,
+    splitInstructions
 }
