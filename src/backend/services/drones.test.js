@@ -18,6 +18,14 @@ describe('Drones Service', () => {
         expect(() => DronesService.parseInstructions(invalidInstructions)).toThrow(Error);
     });
 
+    it('should split instructions with 0 drones', () => {
+        const instructions = 'x^xv';
+
+        const result = DronesService.splitInstructions(instructions, 0);
+
+        expect(result).toEqual([]);
+    });
+    
     it('should split instructions with 1 drone', () => {
         const instructions = 'x^xv';
 

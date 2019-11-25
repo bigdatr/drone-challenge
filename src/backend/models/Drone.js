@@ -1,12 +1,19 @@
 const { UP, DOWN, LEFT, RIGHT, SNAPSHOT } = require('./DroneActions');
 
 class Drone {
-    constructor(instructions) {
+    constructor(instructions, xPosStart = 0, yPosStart = 0) {
         this.instructionArr = instructions;
 
-        this.xPos = 0;
-        this.yPos = 0;
+        this.xPosStart = xPosStart;
+        this.yPosStart = yPosStart;
+
+        this.xPos = xPosStart;
+        this.yPos = yPosStart;
         this.billboards = {};
+    }
+
+    atStartPos() {
+        return this.xPos === this.xPosStart && this.yPos === this.yPosStart;
     }
 
     snapshot() {

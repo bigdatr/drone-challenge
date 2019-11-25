@@ -14,7 +14,11 @@ describe('Drone Model', () => {
 
         drone.launch();
 
+        // should take photos of 2 billboards
         expect(drone.snapshotCount()).toEqual(2);
+
+        // should end up at starting location
+        expect(drone.atStartPos()).toEqual(true);
     });
 
     it('should launch and take 4 snapshots', () => {
@@ -24,6 +28,10 @@ describe('Drone Model', () => {
 
         drone.launch();
 
+        // should take photos of 2 billboards
         expect(drone.snapshotCount()).toEqual(4);
+
+        // should include 2 photos of the same billboard at the starting location
+        expect(drone.billboards['0-0']).toEqual(2);
     });
 })
