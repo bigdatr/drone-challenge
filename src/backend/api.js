@@ -5,10 +5,10 @@ const path = require('path');
 
 const drones = require('./routes/drones');
 
-
 app.use(cors());
+app.use(express.json());
 
-app.route('/drones', drones);
+app.use('/drones', drones);
 
 // Root endpoint
 app.get('/', (req, res) => {

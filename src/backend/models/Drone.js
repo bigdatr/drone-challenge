@@ -9,7 +9,7 @@ class Drone {
         this.billboards = {};
     }
 
-    snapshot = () => {
+    snapshot() {
         const key = `${this.xPos}-${this.yPos}`;
         if (this.billboards[key]) {
             this.billboards[key]++;
@@ -18,26 +18,52 @@ class Drone {
         }
     }
 
-    launch = () => {
-        this.instructionArr.forEach(instruction => {
-            switch (instruction) {
-                case UP:
-                    this.yPos++;
-                    break;
-                case DOWN:
-                    this.yPos--;
-                    break;
-                case LEFT:
-                    this.xPos--;
-                    break;
-                case RIGHT:
-                    this.xPos++;
-                    break;
-                case SNAPSHOT:
-                    this.snapshot();
-                    break;
-            }
-        });
+    snapshotCount() {
+        return Object.keys(this.billboards).length;
+    }
+
+    moveUp() {
+        this.yPos++;
+    }
+
+    moveDown() {
+        this.yPos--;
+    }
+
+    moveLeft() {
+        this.xPos--;
+    }
+
+    moveRight() {
+        this.xPos++;
+    }
+
+    action(instruction) {
+        switch (instruction) {
+            case UP:
+                this.moveUp();
+                break;
+            case DOWN:
+                this.moveDown();
+                break;
+            case LEFT:
+                this.moveLeft();
+                break;
+            case RIGHT:
+                this.moveRight();
+                break;
+            case SNAPSHOT:
+                this.snapshot();
+                break;
+            default:
+                console.error("Unknown instruction...");
+        }
+    }
+
+    launch() {
+        for (let i = 0; i < this.instructionArr.length; i++) {
+            this.action(this.instructionArr[i]);
+        }
     }
 }
 
