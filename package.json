@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "watch": "yarn watch-client & yarn watch-api",
-    "watch-api": "node src/api.js",
-    "watch-client": "yarn poi src/client.js --serve"
+    "watch-api": "node src/backend/api.js",
+    "watch-client": "yarn poi src/frontend/App.js --serve"
   },
   "devDependencies": {
     "cors": "^2.8.5",
@@ -15,5 +15,14 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-fetch-hook": "^1.7.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "multer": "^1.4.2",
+    "nanoid": "^2.1.7",
+    "react-dropzone": "^10.2.1",
+    "react-helmet": "^5.2.1"
   }
 }
