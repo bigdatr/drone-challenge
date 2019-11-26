@@ -1,3 +1,5 @@
+const ValidationError = require('../errors/ValidationError');
+
 function validateInstructions(instructions) {
     // ensure instruction set only contains valid action characters
     const validRegex = /^[\^v<>x]+$/;
@@ -7,7 +9,7 @@ function validateInstructions(instructions) {
 
 function parseInstructions(instructions) {
     if (!validateInstructions(instructions)) {
-        throw new Error("Instructions are in an invalid format!");
+        throw new ValidationError("Instructions are in an invalid format!");
     }
 
     return instructions.split("");
@@ -17,7 +19,7 @@ function splitInstructions(instructions, dronesCount) {
     const instructionsArr = parseInstructions(instructions);
 
     if (instructionsArr.length < dronesCount) {
-        throw new Error(`There is not enough instructions available for ${dronesCount} to launch!`);
+        throw new ValidationError(`There is not enough instructions available for ${dronesCount} to launch!`);
     }
 
     // don't need to perform any grouping, just return array with one instruction group

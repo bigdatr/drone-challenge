@@ -4,9 +4,18 @@ const { parseInstructions, splitInstructions, validateInstructions } = require("
 
 const { UP, DOWN, LEFT, RIGHT, SNAPSHOT } = DroneActions;
 
+const ValidationError = require('../errors/ValidationError');
+
 describe('Instructions Utils', () => {
     it('should validate instructions with good input', () => {
         const validInstructions = "x^^x>>xvvx<<x";
+
+        const result = validateInstructions(validInstructions);
+        expect(result).toEqual(true);
+    });
+
+    it('should validate instructions with good input #2', () => {
+        const validInstructions = "<><><><><";
 
         const result = validateInstructions(validInstructions);
         expect(result).toEqual(true);
@@ -30,7 +39,7 @@ describe('Instructions Utils', () => {
     it('should parse instructions with error', () => {
         const invalidInstructions = 'x^^xVXTCf>>';
 
-        expect(() => parseInstructions(invalidInstructions)).toThrow(Error);
+        expect(() => parseInstructions(invalidInstructions)).toThrow(ValidationError);
     });
 
     it('should split instructions with 0 drones', () => {

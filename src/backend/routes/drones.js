@@ -2,7 +2,15 @@ const express = require('express');
 const router = express.Router();
 const DroneLauncher = require('../models/DroneLauncher');
 
-router.post('/launch', async (req, res) => {
+function wrapAsync(fn) {
+    // wraps async/await functions, catches any errors 
+    // inside the promise and passes to express next function to handle error.
+    return function(req, res, next) {
+      fn(req, res, next).catch(next);
+    };
+}
+
+router.post('/launch', wrapAsync(async (req, res) => {
     // validate instructions
     const { instructions, count = 1 } = req.body;
 
@@ -13,6 +21,6 @@ router.post('/launch', async (req, res) => {
     res.send({
         ...launcher
     });
-});
+}));
 
 module.exports = router;
