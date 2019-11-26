@@ -43,6 +43,9 @@ The project consists of an express route in `api.js` and a react client in `clie
 # install dependencies
 yarn install
 
+# Run the unit tests
+yarn tests
+
 # Run the api and client
 yarn watch
 
