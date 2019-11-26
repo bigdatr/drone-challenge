@@ -1,0 +1,7 @@
+table.droneTable {
+    table-layout: fixed;
+}
+
+table.droneTable td {
+    word-wrap: break-word;
+}
