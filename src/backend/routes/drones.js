@@ -1,21 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Drone = require('../models/Drone');
-
-const DroneService = require('../services/drones');
+const DroneLauncher = require('../models/DroneLauncher');
 
 router.post('/launch', async (req, res) => {
     // validate instructions
-    const { instructions, drones = 1 } = req.body;
+    const { instructions, count = 1 } = req.body;
 
-    const drone = new Drone(instructions);
+    const launcher = new DroneLauncher(instructions);
 
-    drone.launch();
+    const drones = launcher.launch(count);
 
     res.send({
-        instructions,
-        billboardsData: drone.billboards,
-        billboardsCount: drone.snapshotCount()
+        ...launcher
     });
 });
 
