@@ -1,0 +1,22 @@
+.uploader {
+  width: 240px;
+  border: 4px dashed #edf5e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.uploader div {
+  padding: 1rem;
+  color: #05386b;
+  text-align: center;
+}
+
+.uploader button {
+  font-size: 1rem;
+  width: 80%;
+}

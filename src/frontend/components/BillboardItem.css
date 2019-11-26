@@ -1,0 +1,47 @@
+.billboard-item {
+  background-color: #edf5e1;
+  margin-bottom: 0.3rem;
+  color: #05386b;
+  padding: 1rem;
+}
+
+.visit-item-wrapper {
+  display: flex;
+  padding-bottom: 0.5rem;
+}
+
+.visit-item-drone-id {
+  width: 50%;
+}
+
+.billboard-total-visits {
+  padding-left: 16px;
+}
+
+.billboard-chevron {
+  left: 600px;
+  top: 12px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.billboard-item-container {
+  display: flex;
+  position: relative;
+}
+
+.visit-item-timestamp span {
+  color: #379683;
+}
+
+.visit-item-drone-id span {
+  color: #379683;
+}
+
+.billboard-coordinates span {
+  color: #379683;
+}
+
+.billboard-total-visits span {
+  color: #379683;
+}
