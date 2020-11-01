@@ -7,20 +7,29 @@
     "watch": "yarn watch-client & yarn watch-api",
     "watch-api": "node src/api.js",
     "watch-client": "yarn poi src/client.js --serve",
-    "test": "mocha tests/*.js"
+    "test": "mocha tests/*.js",
+		"build": "webpack"
   },
   "devDependencies": {
+    "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "cors": "^2.8.5",
+    "css-loader": "^5.0.0",
     "eslint": "^7.12.1",
     "eslint-plugin-react": "^7.21.5",
     "express": "^4.17.1",
+    "file-loader": "^6.2.0",
     "fs-extra": "^8.1.0",
+    "img-loader": "^3.0.2",
     "mocha": "^8.2.0",
     "poi": "^12.7.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-fetch-hook": "^1.7.1"
+    "react-fetch-hook": "^1.7.1",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
   },
   "dependencies": {
     "lodash.isequal": "^4.5.0"
