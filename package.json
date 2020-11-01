@@ -2,7 +2,7 @@
   "name": "drone-challenge",
   "version": "1.0.0",
   "license": "MIT",
-	"type": "module",
+  "type": "module",
   "scripts": {
     "watch": "yarn watch-client & yarn watch-api",
     "watch-api": "node src/api.js",
