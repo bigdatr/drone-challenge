@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: ['./src/client/client.js'],
@@ -8,6 +9,13 @@ module.exports = {
 			filename: 'client.js'
 	},
 	devtool: 'eval',
+	plugins: [
+		new CopyPlugin({
+			patterns: [
+				{from: 'src/client/index.html', to: '.'}
+			]
+		})
+	],
 	module: {
 		rules: [
 			{

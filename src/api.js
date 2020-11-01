@@ -53,6 +53,11 @@ app.get('/drone/double', (req, res) => {
 	});
 });
 
+// Expose static files
+const moduleURL = new URL(import.meta.url);
+const __dirname = path.dirname(moduleURL.pathname);
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('*', (req, res) => {
 	res.status(404).json({error: 'Path not found'});
 });

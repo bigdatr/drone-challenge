@@ -8,7 +8,7 @@
     "watch-api": "node src/api.js",
     "watch-client": "yarn poi src/client.js --serve",
     "test": "mocha tests/*.js",
-		"build": "webpack"
+    "build": "webpack"
   },
   "devDependencies": {
     "babel-loader": "^8.1.0",
@@ -32,6 +32,7 @@
     "webpack-cli": "^4.1.0"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^6.2.1",
     "lodash.isequal": "^4.5.0"
   }
 }
