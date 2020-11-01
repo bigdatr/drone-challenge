@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import validatePath from './validate_path.js';
 import singleDronePhotos from './single_drone_photos.js';
+import countUniquePhotos from './count_unique_photos.js';
 
 const app = express();
 const httpStatus = {
@@ -24,10 +25,12 @@ app.get('/drone/single', (req, res) => {
 	}
 
 	const photos = singleDronePhotos(path);
+	const unique = countUniquePhotos(photos);
 
 	return res.json({
 		path,
-		photos
+		photos,
+		unique
 	});
 });
 

@@ -7,7 +7,7 @@
     "watch": "yarn watch-client & yarn watch-api",
     "watch-api": "node src/api.js",
     "watch-client": "yarn poi src/client.js --serve",
-		"test": "mocha tests/*.js"
+    "test": "mocha tests/*.js"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -22,5 +22,7 @@
     "react-dom": "^16.10.2",
     "react-fetch-hook": "^1.7.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash.isequal": "^4.5.0"
+  }
 }
