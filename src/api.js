@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import validatePath from './validate_path.js';
 import singleDronePhotos from './single_drone_photos.js';
+import twoDronePhotos from './two_drone_photos.js';
 import countUniquePhotos from './count_unique_photos.js';
 
 const app = express();
@@ -26,6 +27,24 @@ app.get('/drone/single', (req, res) => {
 
 	const photos = singleDronePhotos(path);
 	const unique = countUniquePhotos(photos);
+
+	return res.json({
+		path,
+		photos,
+		unique
+	});
+});
+
+app.get('/drone/double', (req, res) => {
+	const {path} = req.query;
+	if(!validatePath(path)) {
+		return res
+			.status(httpStatus.badRequest)
+			.json({error: 'Invalid path syntax'});
+	}
+
+	const photos = twoDronePhotos(path);
+	const unique = countUniquePhotos([...photos[0], ...photos[1]]);
 
 	return res.json({
 		path,
