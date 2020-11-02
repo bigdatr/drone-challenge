@@ -23,6 +23,7 @@
     "img-loader": "^3.0.2",
     "mocha": "^8.2.0",
     "poi": "^12.7.3",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-fetch-hook": "^1.7.1",
