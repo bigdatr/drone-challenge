@@ -6,8 +6,11 @@ $lightBlue: #eef;
 	display: flex;
 	flex-direction: column;
 
-	label {
+	label,
+	h3 {
 		font-size: 1.5em;
+		font-weight: normal;
+		margin: 10px 0 0;
 	}
 }
 

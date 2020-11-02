@@ -31,10 +31,14 @@ app.get('/drone/single', (req, res) => {
 	return res.json({
 		path,
 		photos,
-		unique
+		unique,
+		drones: 1
 	});
 });
 
+// The number of drones could very well be passed as a parameter
+// This would be preferable if there are plans to add more
+// Currently as there are so few drones it would likely make the API more confusing
 app.get('/drone/double', (req, res) => {
 	const {path} = req.query;
 	if(!validatePath(path)) {
@@ -49,7 +53,8 @@ app.get('/drone/double', (req, res) => {
 	return res.json({
 		path,
 		photos,
-		unique
+		unique,
+		drones: 2
 	});
 });
 
