@@ -30,11 +30,9 @@ module.exports = {
 						options: {
 							modules: {
 								localIdentName: '[name]__[local]--[hash:base64:5]',
-							},
-							localsConvention: 'camelCase',
+							}
 						}
 					},
-					'postcss-loader',
 					{
 						loader: 'sass-loader'
 					}

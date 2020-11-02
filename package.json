@@ -26,6 +26,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-fetch-hook": "^1.7.1",
+    "sass": "^1.28.0",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "webpack": "^5.3.2",
