@@ -15,7 +15,8 @@ function App() {
 	return (<div className={styles.main}>
 		<h1>Drone Challenge</h1>
 		<DroneInput setResults={setResults} />
-		{results ? <DroneResults results={results} /> : null}
+		{results?.photos ? <DroneResults results={results} /> : null}
+		{results?.error ? <span className={styles.error}>{results.error}</span> : null }
 	</div>);
 }
 

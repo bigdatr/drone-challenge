@@ -5,7 +5,7 @@ import style from './styles.scss';
 
 function DroneGraphic(props) {
 	const {photos, drones} = props;
-	const squareSize = 50;
+	const squareSize = 35;
 	// These need to be updated if the drone path changes
 	const imgWidth = 32;
 	const imgHeight = 32;
