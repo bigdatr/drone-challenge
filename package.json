@@ -6,11 +6,12 @@
   "scripts": {
     "watch": "yarn watch-client & yarn watch-api",
     "watch-api": "node src/api.js",
-    "watch-client": "yarn poi src/client.js --serve",
+    "watch-client": "yarn poi src/public/client.js --serve",
     "test": "mocha tests/*.js",
     "build": "webpack"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
