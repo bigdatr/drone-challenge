@@ -8,6 +8,7 @@ function DroneInput(props) {
 	const [instructions, setInstructions] = useState('x^>xv');
 	const [droneCount, setDroneCount] = useState(1);
 	const {setResults} = props;
+	console.log('style', style);
 
 	const sendInstructions = (evt) => {
 		evt.preventDefault();
@@ -46,7 +47,7 @@ function DroneInput(props) {
 			))}
 		</div>
 
-		<label for="drone_input_instructions">Instructions</label>
+		<label htmlFor="drone_input_instructions">Instructions</label>
 		<input className={style.input} type="text" id="drone_input_instructions" value={instructions} onChange={(evt) => setInstructions(evt.target.value)} />
 		<input className={style.button} type="submit" value="Send" />
 		<p>Valid drone instructions are:</p>
