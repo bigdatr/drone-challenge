@@ -1,6 +1,6 @@
-import express from 'express';
+import bodyParser from 'body-parser';
 import cors from 'cors';
-import path from 'path';
+import express from 'express';
 import validatePath from './validate_path.js';
 import singleDronePhotos from './single_drone_photos.js';
 import twoDronePhotos from './two_drone_photos.js';
@@ -12,60 +12,50 @@ const httpStatus = {
 };
 
 app.use(cors());
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.json({foo: 'bar'});
-});
+/**
+ * It is a bit hard to say if this should be a GET or POST request in a RESTful API
+ * Strictly speaking this is getting information from the server which would be more appropriate in a GET request
+ * however limits on the payload for get data may make it unreasonable. An alternative solution may be to pair a put reqest
+ * to save the data and a get request to fetch the results.
+ * However, if this request is pretending to send the data to a drone then a POST request is quite reasonble.
+ **/
+app.post('/', (req, res) => {
+	const {path, drones = 1} = req.body;
 
-app.get('/drone/single', (req, res) => {
-	const {path} = req.query;
 	if(!validatePath(path)) {
 		return res
 			.status(httpStatus.badRequest)
 			.json({error: 'Invalid path syntax'});
 	}
 
-	const photos = singleDronePhotos(path);
-	const unique = countUniquePhotos(photos);
+	let photos = null;
+	let unique = 0;
 
-	return res.json({
-		path,
-		photos,
-		unique,
-		drones: 1
-	});
-});
-
-// The number of drones could very well be passed as a parameter
-// This would be preferable if there are plans to add more
-// Currently as there are so few drones it would likely make the API more confusing
-app.get('/drone/double', (req, res) => {
-	const {path} = req.query;
-	if(!validatePath(path)) {
+	if(drones === 1) {
+		// We wrap the single photos in an array to match the two drone format
+		photos = [singleDronePhotos(path)];
+		unique = countUniquePhotos(photos[0]);
+	} else if(drones === 2) {
+		photos = twoDronePhotos(path);
+		// Combine photos into a single array to count unique photos from both drones
+		unique = countUniquePhotos([...photos[0], ...photos[1]]);
+	} else {
 		return res
 			.status(httpStatus.badRequest)
-			.json({error: 'Invalid path syntax'});
+			.json({error: `Invalid number of drones: ${drones}`});
 	}
 
-	const photos = twoDronePhotos(path);
-	const unique = countUniquePhotos([...photos[0], ...photos[1]]);
+	const numPhotos = photos.flat().length;
 
 	return res.json({
+		drones,
 		path,
 		photos,
-		unique,
-		drones: 2
+		numPhotos,
+		unique
 	});
 });
 
-// Expose static files
-const moduleURL = new URL(import.meta.url);
-const __dirname = path.dirname(moduleURL.pathname);
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('*', (req, res) => {
-	res.status(404).json({error: 'Path not found'});
-});
-
-app.listen(4001, () => console.log(`Api started at http://localhost:4001`));
-
+export default app;

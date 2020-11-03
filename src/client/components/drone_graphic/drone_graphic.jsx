@@ -10,9 +10,7 @@ function DroneGraphic(props) {
 	const imgWidth = 32;
 	const imgHeight = 32;
 
-	const allPhotos = drones === 1
-		? photos
-		: [...photos[0], ...photos[1]];
+	const allPhotos = photos.flat();
 
 	// Iterate through the photos and get the biggest of each coordinate
 	const gridSize = allPhotos.reduce(

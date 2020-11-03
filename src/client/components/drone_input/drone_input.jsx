@@ -11,12 +11,15 @@ function DroneInput(props) {
 
 	const sendInstructions = (evt) => {
 		evt.preventDefault();
-		let countPath = 'single';
-		if(droneCount === 2) {
-			countPath = 'double';
-		}
-
-		return fetch(`/drone/${countPath}?path=${encodeURI(instructions)}`)
+		return fetch('/api/drone/',
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({path: instructions, drones: droneCount})
+			}
+		)
 			.then((response) => response.json())
 			.then((response) => setResults(response));
 	};
