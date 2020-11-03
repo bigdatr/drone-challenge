@@ -5,7 +5,6 @@ import DroneInput from './components/drone_input/drone_input.jsx';
 import DroneResults from './components/results/results.jsx';
 import styles from './styles.scss';
 
-console.log('React', React);
 const {useState} = React;
 
 

@@ -11,9 +11,10 @@ function DroneInput(props) {
 
 	const sendInstructions = (evt) => {
 		evt.preventDefault();
-		return fetch('/api/drone/',
+		return fetch('http://localhost:4001/api/drone/',
 			{
 				method: 'POST',
+				mode: 'cors',
 				headers: {
 					'Content-Type': 'application/json'
 				},
