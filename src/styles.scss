@@ -1,0 +1,32 @@
+h1,
+h2 {
+	color: #000064;
+}
+
+.main {
+	@media(min-width: 800px) {
+		width: 800px;
+		margin: auto;
+	}
+}
+
+.error {
+	color: #700;
+	font-weight: bold;
+	font-size: 1.2rem;
+
+	&::before {
+		content: '!';
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		border-radius: 50%;
+		background-color: #700;
+		color: white;
+		padding: 0.35em;
+		width: 0.7em;
+		height: 0.7em;
+		margin-right: 0.5em;
+		text-align: center;
+	}
+}

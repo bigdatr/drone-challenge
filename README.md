@@ -43,9 +43,15 @@ The project consists of an express route in `api.js` and a react client in `clie
 # install dependencies
 yarn install
 
+# Build the client js file
+yarn build
+
 # Run the api and client
 yarn watch
 
 # open the app
 open http://localhost:4000
 ```
+
+The client source is included in src/client/client.js as poi appears to use a much older babel version and doesn't work with newer features or detect the newer style .babelrc.json/.babelrc.js files.
+Instead, a webpack build script builds the source into src/public/client.js which can be served by either api.js or `yarn watch`
