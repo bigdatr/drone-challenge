@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './styles.scss';
+import DroneGraphic from '../drone_graphic/drone_graphic.jsx';
 
 function DroneResults(props) {
 	const {path, photos, unique, drones} = props.results;
@@ -13,6 +14,8 @@ function DroneResults(props) {
 			<li>{`Unique Photographs: ${unique}`}</li>
 			<li>{`Number of drones: ${drones}`}</li>
 		</ul>
+		<h3>Photo locations</h3>
+		<DroneGraphic photos={photos} drones={drones} />
 	</div>);
 }
 

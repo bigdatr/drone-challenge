@@ -109,7 +109,13 @@
 				"lines-between-class-members": "error",
 				"max-classes-per-file": "error",
 				"max-depth": "error",
-				"max-len": "error",
+				"max-len": [
+					"error",
+					{
+						"code": 120,
+						"ignoreComments": true
+					}
+					],
 				"max-lines": "error",
 				"max-lines-per-function": "error",
 				"max-nested-callbacks": "error",
@@ -146,12 +152,12 @@
 				"no-extend-native": "error",
 				"no-extra-bind": "error",
 				"no-extra-label": "error",
-				"no-extra-parens": "error",
+				"no-extra-parens": "off",
 				"no-floating-decimal": "error",
 				"no-implicit-coercion": "error",
 				"no-implicit-globals": "error",
 				"no-implied-eval": "error",
-				"no-inline-comments": "error",
+				"no-inline-comments": "off",
 				"no-invalid-this": "error",
 				"no-iterator": "error",
 				"no-label-var": "error",
@@ -205,7 +211,7 @@
 						}
 				],
 				"no-template-curly-in-string": "error",
-				"no-ternary": "error",
+				"no-ternary": "off",
 				"no-throw-literal": "error",
 				"no-trailing-spaces": "error",
 				"no-undef-init": "error",
